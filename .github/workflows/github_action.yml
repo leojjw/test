@@ -1,4 +1,4 @@
-name: Update Weather in README
+name: Update test.json
 
 on:
   schedule:
@@ -20,7 +20,7 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add README.md
+          git add test.json
           git commit -m "자동 업데이트" || echo "No changes to commit"
           git push
 
