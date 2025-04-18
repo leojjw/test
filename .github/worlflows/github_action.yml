@@ -1,0 +1,26 @@
+name: Update Weather in README
+
+on:
+  schedule:
+    - cron: "*/5 * * * *" # 매 5분마다다
+  workflow_dispatch:  # 수동 실행 가능
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 리포지토리 체크아웃
+        uses: actions/checkout@v3
+
+      - name: test.json 파일 업데이트
+        run: |
+          curl https://jsonplaceholder.typicode.com/todos/$(($(date +%M)+1)) >> test.json
+
+      - name: 변경 사항 커밋 및 푸시
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git commit -m "자동 업데이트" || echo "No changes to commit"
+          git push
+
