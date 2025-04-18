@@ -1,6 +1,7 @@
 name: Update test.json
 
 on:
+  push:
   schedule:
     - cron: "*/5 * * * *" # 매 5분마다다
   workflow_dispatch:  # 수동 실행 가능
