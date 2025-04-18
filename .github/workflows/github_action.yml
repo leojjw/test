@@ -15,7 +15,7 @@ jobs:
 
       - name: test.json 파일 업데이트
         run: |
-          curl https://jsonplaceholder.typicode.com/todos/$(($(date +%M)+1)) >> test.json
+          curl https://jsonplaceholder.typicode.com/todos/$(($(date +%M)+1)) > test.json
 
       - name: 변경 사항 커밋 및 푸시
         run: |
